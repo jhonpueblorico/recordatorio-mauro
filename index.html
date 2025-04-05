@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recordatorio Mao</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="btn-whatsapp" class="btn-wasap">Wasap</button>
+
+  <h2>Nuevo Recordatorio</h2>
+
+  <input type="text" id="recordatorio" class="input" placeholder="Escribe tu recordatorio" />
+  <input type="datetime-local" id="fecha-hora" class="input" />
+  <select id="repetir" class="input">
+    <option value="una">Una sola vez</option>
+    <option value="diaria">Cada día</option>
+    <option value="semanal">Cada semana</option>
+    <option value="mensual">Cada mes</option>
+  </select>
+
+  <button class="btn" id="guardar-btn">Guardar</button>
+  <p id="mensaje" class="msg"></p>
+
+  <h3>Lista de Recordatorios</h3>
+  <ul id="lista-recordatorios" class="lista"></ul>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-mensaje"></p>
+      <input type="number" id="minutos-posponer" class="input" placeholder="Minutos para posponer" min="1" />
+      <button id="posponer-btn" class="btn">Posponer</button>
+      <button id="cerrar-modal" class="btn">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
