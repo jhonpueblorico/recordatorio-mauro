@@ -5,7 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recordatorio Mao</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js"></script>
+
+  <script>
+    // Inicializar Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCnt-WgeJL9po_2UvwYZ94m9kIySjL2jm4",
+      authDomain: "recordatorio-mauro.firebaseapp.com",
+      projectId: "recordatorio-mauro",
+      storageBucket: "recordatorio-mauro.appspot.com",
+      messagingSenderId: "178317275132",
+      appId: "1:178317275132:web:3c228cd26effa1f0064c79"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+
+    messaging.getToken({ vapidKey: 'AQUÍ_TU_CLAVE_VAPID' }).then((currentToken) => {
+      if (currentToken) {
+        console.log('Token:', currentToken);
+      } else {
+        console.log('No se obtuvo token.');
+      }
+    }).catch((err) => {
+      console.log('Error al obtener token:', err);
+    });
+  </script>
 </head>
+
 <body>
   <button id="btn-whatsapp" class="btn-wasap">Wasap</button>
 
@@ -38,15 +69,15 @@
 
   <script src="script.js"></script>
   <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('firebase-messaging-sw.js')
-      .then(function(registration) {
-        console.log('Service Worker registrado con éxito:', registration);
-      })
-      .catch(function(err) {
-        console.log('Error al registrar el Service Worker:', err);
-      });
-  }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('firebase-messaging-sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(function(err) {
+          console.log('Error al registrar el Service Worker:', err);
+        });
+    }
   </script>
 </body>
 </html>
