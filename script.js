@@ -109,3 +109,11 @@ document.getElementById('posponer-btn').addEventListener('click', () => {
 document.getElementById('btn-whatsapp').addEventListener('click', () => {
   window.open('https://wa.me/', '_blank');
 });
+messaging.getToken({ vapidKey: 'BKF9GqBGNb73nAhqNbujIG6OE7p04lXHTKr09DsjsREKDVsQxoCxawhtAVPqu7Is_x3zrvsyCgPrQrYu3yBubBk' })
+.then((currentToken) => {
+  if (currentToken) {
+    alert('Token FCM:\n' + currentToken);  // <- esto muestra el token como alerta
+  } else {
+    alert('No se pudo obtener el token.');
+  }
+});
