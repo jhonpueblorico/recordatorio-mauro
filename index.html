@@ -1,9 +1,16 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recordatorio Mao</title>
-  <link rel="stylesheet" href="style.css">  <!-- Firebase Scripts -->  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js"></script>  <script>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js"></script>
+
+  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyCnt-WgeJL9po_2UvwYZ94m9kIySjL2jm4",
       authDomain: "recordatorio-mauro.firebaseapp.com",
@@ -15,21 +22,11 @@
 
     firebase.initializeApp(firebaseConfig);
     const messaging = firebase.messaging();
-
-    messaging.getToken({
-      vapidKey: 'BKF9GqBGNb73nAhqNbujIG6OE7p04lXHTKr09DsjsREKDVsQxoCxawhtAVPqu7Is_x3zrvsyCgPrQrYu3yBubBk'
-    }).then((currentToken) => {
-      if (currentToken) {
-        console.log('Token:', currentToken);
-      } else {
-        console.warn('No se pudo obtener el token.');
-      }
-    }).catch((err) => {
-      console.error('Error al obtener el token:', err);
-    });
-  </script></head>
+  </script>
+</head>
 <body>
-  <button id="btn-whatsapp" class="btn-wasap">Wasap</button>  <h2>Nuevo Recordatorio</h2>
+  <button id="btn-whatsapp" class="btn-wasap">Wasap</button>
+  <h2>Nuevo Recordatorio</h2>
   <input type="text" id="recordatorio" class="input" placeholder="Escribe tu recordatorio" />
   <input type="datetime-local" id="fecha-hora" class="input" />
   <select id="repetir" class="input">
@@ -39,19 +36,28 @@
     <option value="mensual">Cada mes</option>
   </select>
   <button class="btn" id="guardar-btn">Guardar</button>
-  <p id="mensaje" class="msg"></p>  <h3>Lista de Recordatorios</h3>
-  <ul id="lista-recordatorios" class="lista"></ul>  <div id="modal" class="modal">
+  <p id="mensaje" class="msg"></p>
+
+  <h3>Lista de Recordatorios</h3>
+  <ul id="lista-recordatorios" class="lista"></ul>
+
+  <div id="modal" class="modal">
     <div class="modal-content">
       <p id="modal-mensaje"></p>
       <input type="number" id="minutos-posponer" class="input" placeholder="Minutos para posponer" min="1" />
       <button id="posponer-btn" class="btn">Posponer</button>
       <button id="cerrar-modal" class="btn">Cerrar</button>
     </div>
-  </div>  <script src="script.js"></script>  <script>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('firebase-messaging-sw.js')
         .then(reg => console.log('Service Worker registrado:', reg))
         .catch(err => console.error('Error registrando Service Worker:', err));
     }
-  </script></body>
+  </script>
+</body>
 </html>
